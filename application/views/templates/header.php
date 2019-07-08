@@ -47,12 +47,13 @@
                     <li><a href="<?= base_url('blog1'); ?>">Blog</a></li>
                     <li>
                         <?php		
-			if(isset($_SESSION["login"])){
-				echo "<a href='profile.php'>MyProfile</a>";
-				} else {
-				echo"<a href='login.php'>Login</a>";
-				}
-			?>
+			// if(isset($_SESSION["login"])){
+			// 	echo "<a href='profile.php'>MyProfile</a>";
+			// 	} else {
+			// 	echo"<a href='login.php'>Login</a>";
+			// 	}
+            ?>
+            <a href='<?= base_url('login'); ?>'>Login</a>
                     </li>
                 </ul>
             </div>

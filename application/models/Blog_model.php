@@ -1,0 +1,4 @@
+<?php 
+    //tambah,hapus,editkomen()
+
+?>
