@@ -38,13 +38,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">Anton</a>
+                <a class="navbar-brand" href="<?= base_url(); ?>">Anton</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="work.html">Work</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="blog-01.php">Blog</a></li>
+                    <li><a href="<?= base_url('about'); ?>">About</a></li>
+                    <li><a href="<?= base_url('blog1'); ?>">Blog</a></li>
                     <li>
                         <?php		
 			if(isset($_SESSION["login"])){
