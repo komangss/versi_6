@@ -1,0 +1,450 @@
+/*
+ * Author: Carlos Alvarez
+ * URL: http://alvarez.is
+ *
+ * Project Name: STANLEY - Free Bootstrap 3 Theme
+ * Version: 1.0
+ * URL: http://blacktie.co
+ */
+
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+body {
+  	background-color: #ffffff;
+  	font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #555;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Titles */
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #333;
+}
+
+h1 {
+	font-size: 35px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+
+
+/* Paragraph & Typographic */
+p {
+    line-height: 28px;
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+
+.centered {
+    text-align: center;
+}
+
+/* Links */
+a {
+    color: #1abc9c;
+    word-wrap: break-word;
+
+    -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+    transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+
+a:hover,
+a:focus {
+    color: #7b7b7b;
+    text-decoration: none;
+    outline: 0;
+}
+
+a:before,
+a:after {
+    -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+    transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+
+ hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+
+.navbar {
+	text-transform: uppercase;
+	margin-bottom: 0px;
+}
+
+.navbar-inverse {
+	padding-bottom: 70px;
+	padding-top: 70px;
+}
+
+.navbar-inverse {
+	background-color: #1abc9c;
+	border-color: #16a085;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+	color: white;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+	color: #222222;
+}
+
+.navbar-brand {
+	font-weight: 700;
+	font-size: 20px;
+	letter-spacing: 2px;
+}
+
+.navbar-inverse .navbar-brand {
+	color: white;
+}
+
+.navbar-inverse .navbar-toggle {
+	border-color: transparent;
+}
+
+.progress-bar-theme {
+  background-color: #1abc9c;
+}
+
+
+/* Helpers */
+
+.mt {
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.pt {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+
+/* +++++ WRAP SECTIONS +++++ */
+
+#ww {
+	padding-top: 70px;
+	padding-bottom: 70px;
+	background-color: #f2f2f2;
+}
+
+
+#footer {
+	background-color: #2f2f2f;
+	padding-top: 50px;
+	padding-bottom: 50px; 
+	width:100%;
+}
+
+#footer p {
+	color: white;
+}
+
+#footer h4 {
+	color: white;
+	text-transform: uppercase;
+	padding-bottom: 20px;
+}
+
+
+/* +++++ Color Wraps / Blog Page +++++ */
+
+#grey {
+	padding-top: 60px;
+	padding-bottom: 60px;
+	background-color: #f2f2f2;
+}
+
+#white {
+	padding-top: 60px;
+	padding-bottom: 60px;
+	background-color: #ffffff;
+}
+
+
+
+/* Blog Date*/
+bd {
+	font-size: 12px;
+	text-transform: uppercase;
+	color: #d2d2d2;
+	font-weight: 700;
+}
+
+/* Blog Author*/
+ba {
+	font-size: 12px;
+	text-transform: uppercase;
+}
+
+/* Blog Quote */
+.bq {
+	font-size: 22px;
+	padding-top: 30px;
+}
+
+/* Blog Tags */
+bt {
+	font-size: 12px;
+}
+
+/* ================== PORTFOLIO IMAGES HOVER EFFECT ================== */
+/* Effects also are controled by hover.zoom.js */
+.zoom { 
+    display:block; 
+    position:relative; 
+    overflow:hidden; 
+    background:transparent url(../img/loader.gif) no-repeat center;
+}
+
+
+    .zoomOverlay {
+        position:absolute;
+        top:0; left:0;
+        bottom:0; right:0;
+        display:none;
+        background-image:url(../img/zoom.png);
+        background-repeat:no-repeat;
+        background-position:center;
+    }
+
+.zoom2 {
+	opacity: 1;
+}
+
+.zoom2:hover {
+	opacity: 0.5;
+}
+
+/* glyphicon Configuration */
+
+.glyphicon {
+	font-size: 40px;
+	color: #1abc9c;
+}	
+
+.coment {
+	margin-bottom: 30px;	
+	box-shadow: 0px 0px 3px 0px #333;
+	height: 200px;
+	background-color: salmon;
+}
+.isikomen {
+    margin-left:58px;
+	margin-top: 1px;
+}
+
+b 	{
+	font-size: 15px;
+}
+
+button	{
+	position:left;
+}
+
+img-blog {
+	width: 1100px;
+	height: 100px;
+}
+.namasikomen{
+	margin-left: 10px;
+	font-size: 40	px;
+}
+   .buttonkomen{
+	position: absolute;
+	left: 60%;
+}
+
+.formkomen{
+	border: 5px solid #d1d1d1;
+	width: 520px;
+	padding: 5px;
+}
+small{
+	font-size:smaller;
+}
+.imgclass{
+	margin-top:10px;
+}
+.pref-post{
+	margin-bottom: 30px;	
+	box-shadow: 0px 0px 3px 0px #333;
+	height: 100px;
+	width : 150px;
+	background-color: #1abc9c;
+}
+suhu{
+	position:absolute;
+	left:20px;
+}
+
+
+@media screen and (min-width: 769px) {
+    .buttonkomen{
+	position: absolute;
+	left: 1400px;
+	}
+	.tanggal {
+		position: relative;
+		left: 50px;
+		bottom: 40px;
+	}
+}
+
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for all buttons */
+.btnsignup {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left; background-color: #4CAF50;
+  width: 50%;
+
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+ 
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+     width: 100%;
+  }
+}
+
+
+.profil button {
+  position: absolute;
+
+}
+
+.post {
+  display: block;
+}
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 15px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width:600px) {
+  .column {
+    width: 100%;
+  }
+}
