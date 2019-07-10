@@ -22,37 +22,16 @@
 												<input type="checkbox" name="remember" id="remember" style="margin-bottom:15px">
 												<label for="remember">Remember me</label>
 											<br>
-											<button type="submit" name="login" class="btn btn-success ">Login</button>
-											<button onclick="document.getElementById('id01').style.display='block';
-												document.getElementById('navbar').style.display='none';" style="width:auto;" class="btn btn-success " >Sign Up</button>
-										</ul>
+											<li>
+                                            <button type="submit" name="login" class="btn btn-success ">Login</button>
+                                            </li>
+                                            <!-- <button onclick="document.getElementById('id01').style.display='block';
+												document.getElementById('navbar').style.display='none';" style="width:auto;" class="btn btn-success " >Sign Up</button> -->
+                                        <br><a href="<?= base_url('login/new'); ?>">Dont have Account?</a>
+                                            </ul>
 									</form>	
 								
-				<!-- sign up start -->		
-				<div id="id01" class="modal">
-						<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-						<form class="modal-content" action="" method="post">
-										<h1>Sign Up</h1>
-										<p>Please fill in this form to create an account.</p>
-										<hr>
-										<label for="username"><b>Username</b></label>
-											<input type="text" placeholder="Enter Username" name="username" required>
-
-											<label for="psw"><b>Password</b></label>
-											<input type="password" placeholder="Enter Password" name="password" required>
-
-											<label for="psw-repeat"><b>Repeat Password</b></label>
-											<input type="password" placeholder="Repeat Password" name="password2" required>
-											
-										<p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 		
-										<div class="clearfix">
-												<button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn btn-success ">Cancel</button>
-												<button type="submit" class="btn btn-success " name ="register" >Sign Up</button>
-											</div>
-									</div>
-							</form>
-						</div><!--modal-->
 				</div> <!-- collg6 centered-->
 		</div><!-- /row -->
 	</div><!-- /container -->

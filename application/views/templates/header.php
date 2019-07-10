@@ -12,7 +12,7 @@
     <title><?= $title; ?> </title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/css/bootstrap.css" rel="stylesheet">
 
 
     <!-- Custom styles for this template -->
@@ -46,14 +46,11 @@
                     <li><a href="<?= base_url('about'); ?>">About</a></li>
                     <li><a href="<?= base_url('blog1'); ?>">Blog</a></li>
                     <li>
-                        <?php		
-			// if(isset($_SESSION["login"])){
-			// 	echo "<a href='profile.php'>MyProfile</a>";
-			// 	} else {
-			// 	echo"<a href='login.php'>Login</a>";
-			// 	}
-            ?>
-            <a href='<?= base_url('login'); ?>'>Login</a>
+                        <?php if ($_SESSION['login'] == true) {
+                            echo "<a href='".base_url('login/logout')."'>Logout</a>";
+                        } else {
+                            echo "<a href='".base_url('login')."'>login</a>";
+                        } ?>
                     </li>
                 </ul>
             </div>

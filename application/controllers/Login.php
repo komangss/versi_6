@@ -5,8 +5,11 @@ class Login extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('Login_model');
+        // $this->load->model('Login_model');
         $this->load->library('form_validation');
+        $this->load->library('session');
+        $this->load->helper('cookie');
+        $_SESSION['login']= false;
     
     }
 	public function index()
@@ -35,12 +38,50 @@ class Login extends CI_Controller {
         // jika ada
         if ($user) {
             // cek password
-            if ($password == $user['password']) {
-                // password_verify($password, $user['password'])
-                echo "ok";
+            // var_dump($username);
+            // var_dump($password);
+            // var_dump($user['password']);
+            if (password_verify($password, $user['password'])) {
+                $data = [
+                    'iduser' => $user['id'],
+                    'nama' => $user['username'],
+                    'login' => true
+                ];
+                $this->session->set_userdata($data);
+                redirect('blog1');
             } else {
-                echo "gagal";
+                redirect('login');
             }
         }
+    }
+    public function new() {
+        $this->form_validation->set_rules('usernameNew', 'Usename', 'trim|required');
+        $this->form_validation->set_rules('passwordNew', 'Password', 'trim|required');
+        $this->form_validation->set_rules('passwordNew2', 'Password', 'required|trim|matches[passwordNew]');
+
+        if ($this->form_validation->run() == false) {
+		$data['title'] = "Registration";
+		$this->load->view('templates/header',$data);
+		$this->load->view('login/new');
+		$this->load->view('templates/footer');
+        } else {
+            $data = [
+                'username' => htmlspecialchars($this->input->post('usernameNew', true)),
+                'password' => password_hash($this->input->post('passwordNew'), PASSWORD_DEFAULT)
+            ];
+            // var_dump($data);die;
+            $this->db->insert('users', $data);
+            redirect('login');
+        }
+    }
+
+    public function logout()
+    {
+        unset(
+            $_SESSION['iduser'],
+            $_SESSION['nama']
+        );
+        $_SESSION['login'] = false;
+        redirect('home');
     }
 }
