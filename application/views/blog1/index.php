@@ -159,7 +159,7 @@
 				<input type="hidden" name="nama" value="<?= $_SESSION['nama']; ?>">
 			</div>
 			<div class="form-group">
-				<input type="hidden" name="tanggal" value="<?= time('Y m d : H i s'); // nanti pake js
+				<input type="hidden" name="tanggal" value="<?= date('Y-m-d  H:i:s'); // nanti pake js
 															?>">
 			</div>
 			<div class="form-group">
