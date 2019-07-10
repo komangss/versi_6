@@ -45,45 +45,50 @@
 			</p><br>
 
 			<p>
-				TAGS: <a href="#">Music</a> - <a href="#">komposer</a>
+				TAGS: <a href="#">Science</a> - <a href="#">Suhu</a>
 			</p>
 			<hr>
 			<p>
 				<a href="blog.html"># Back</a>
 			</p>
+
 			<!-- temp-->
 			<h2>konverter suhu :</h2><br><br>
 			<div class="suhu">
-				<button id="celcius" class="btn btn-primary">Celcius</button>
-				<button id="fhn" class="btn btn-success">Fahrenheit</button>
-				<button id="kvn" class="btn btn-danger">Kelvin</button>
-				<br><br>
-				<div id="showCelcius">
+			<table>
+				<tr>
+					<th><button id="celcius" class="btn btn-primary">Celcius</button></th>
+					<th><button id="fhn" class="btn btn-success">Fahrenheit</button></th>
+					<th><button id="kvn" class="btn btn-danger">Kelvin</button></th>
+				</tr>
+				<tr>
+					<td><div id="showCelcius">
 					<p>
 						<label>Celsius</label><br>
 						<input id="inputCelsius" type="number" placeholder="Celsius" oninput="temperatureConverter(this.value)" onchange="temperatureConverter(this.value)">
 					</p>
 					<p>Fahrenheit: <span id="outputFahrenheit"></span></p>
 					<p>Kelvin : <span id="outputKelvin"></span></p>
-				</div>
-
-				<div id="showfhn">
+				</div></td>
+				<td><div id="showfhn">
 					<p>
 						<label>Fahrenheit</label><br>
 						<input id="inputFahrenheit" type="number" placeholder="Fahrenheit" oninput="temperatureConverter2(this.value)" onchange="temperatureConverter2(this.value)">
 					</p>
 					<p>Celcius: <span id="outputCelcius"></span></p>
 					<p>Kelvin : <span id="outputKelvin2"></span></p>
-				</div>
-
-				<div id="showkvn">
+				</div></td>
+				<td><div id="showkvn">
 					<p>
 						<label>Kelvin</label><br>
 						<input id="inputKelvin" type="number" placeholder="Kelvin" oninput="temperatureConverter3(this.value)" onchange="temperatureConverter3(this.value)">
 					</p>
 					<p>Fahrenheit: <span id="outputFahrenheit2"></span></p>
 					<p>Celcius: <span id="outputCelcius2"></span></p>
-				</div>
+				</div></td>
+				</tr>
+			</table>
+	
 			</div>
 			<!-- temp end-->
 		</div><!-- /row -->
@@ -93,7 +98,7 @@
 <!-- post -->
 
 
-
+<hr>
 
 <!-- container -->
 <div class="container jumbotron">
@@ -101,30 +106,22 @@
 		COMMENT BOX
 	</h1>
 	<!-- wrap -->
-	<?php foreach ($komen as $row) : ?>
+	<?php foreach ($komentar as $km) : ?>
 		<div class="coment">
 			<div class="namasikomen">
 				<img src="assets/img/user.png" width="40px" height="50px" class="imgclass">
-				<b><?= $row["nama"]; ?></b>
+				<b><?= $km["nama"]; ?></b>
 				<div class="tanggal">
-					<p><?= $row["Tanggal"]; ?></p>
+					<p><?= $km["tanggal"]; ?></p>
 				</div>
 			</div>
 			<div class="isikomen">
-				<p><?= $row["komentar"]; ?></p>
+				<p><?= $km["komentar"]; ?></p>
 			</div>
 			<div class="buttonkomen">
 				<button type="button" class="btn btn-primary buttonkomen" id="btnreply">Reply</button>
 			</div>
 
-			<?php if ($userkomen || $admin = true) {
-				echo "
-				<div class='delete'>
-				<a>hapus</a>
-				<a>edit</a>
-				</div>";
-			}
-			?>
 			<p style="color:white;">.</p>
 
 		</div>
@@ -168,7 +165,7 @@
 		</form>
 	<?php endif; ?>
 	<?php if ($_SESSION['login'] == false) {
-		echo "<h3>Login For Comment</h3>";
+		echo "<h3>Login For Comment :)</h3>";
 	}?>
 	<br>
 </div>
