@@ -47,9 +47,9 @@
                     <li><a href="<?= base_url('blog1'); ?>">Blog</a></li>
                     <li>
                         <?php if ($_SESSION['login'] == true) {
-                            echo "<a href='".base_url('login/logout')."'>Logout</a>";
+                            echo "<a href='" . base_url('login/logout') . "'>Logout</a>";
                         } else {
-                            echo "<a href='".base_url('login')."'>login</a>";
+                            echo "<a href='" . base_url('login') . "'>login</a>";
                         } ?>
                     </li>
                 </ul>

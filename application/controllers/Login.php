@@ -1,32 +1,33 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class Login extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         // $this->load->model('Login_model');
         $this->load->library('form_validation');
         $this->load->library('session');
         $this->load->helper('cookie');
-        $_SESSION['login']= false;
-    
+        $_SESSION['login'] = false;
     }
-	public function index()
-	{
+    public function index()
+    {
         $this->form_validation->set_rules('usernameLogin', 'Usename', 'trim|required');
         $this->form_validation->set_rules('passwordLogin', 'Password', 'trim|required');
 
         if ($this->form_validation->run() == false) {
-		$data['title'] = "Login";
-		$this->load->view('templates/header',$data);
-		$this->load->view('login/index');
-		$this->load->view('templates/footer');
+            $data['title'] = "Login";
+            $this->load->view('templates/header', $data);
+            $this->load->view('login/index');
+            $this->load->view('templates/footer');
         } else {
             $this->_login();
         }
     }
-    private function _login ()
+    private function _login()
     {
         $username = $this->input->post('usernameLogin');
         $password = $this->input->post('passwordLogin');
@@ -54,16 +55,17 @@ class Login extends CI_Controller {
             }
         }
     }
-    public function new() {
+    public function new()
+    {
         $this->form_validation->set_rules('usernameNew', 'Usename', 'trim|required');
         $this->form_validation->set_rules('passwordNew', 'Password', 'trim|required');
         $this->form_validation->set_rules('passwordNew2', 'Password', 'required|trim|matches[passwordNew]');
 
         if ($this->form_validation->run() == false) {
-		$data['title'] = "Registration";
-		$this->load->view('templates/header',$data);
-		$this->load->view('login/new');
-		$this->load->view('templates/footer');
+            $data['title'] = "Registration";
+            $this->load->view('templates/header', $data);
+            $this->load->view('login/new');
+            $this->load->view('templates/footer');
         } else {
             $data = [
                 'username' => htmlspecialchars($this->input->post('usernameNew', true)),
@@ -77,10 +79,8 @@ class Login extends CI_Controller {
 
     public function logout()
     {
-        unset(
-            $_SESSION['iduser'],
-            $_SESSION['nama']
-        );
+        unset($_SESSION['iduser'],
+        $_SESSION['nama']);
         $_SESSION['login'] = false;
         redirect('home');
     }

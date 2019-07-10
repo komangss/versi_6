@@ -55,40 +55,46 @@
 			<!-- temp-->
 			<h2>konverter suhu :</h2><br><br>
 			<div class="suhu">
-			<table>
-				<tr>
-					<th><button id="celcius" class="btn btn-primary">Celcius</button></th>
-					<th><button id="fhn" class="btn btn-success">Fahrenheit</button></th>
-					<th><button id="kvn" class="btn btn-danger">Kelvin</button></th>
-				</tr>
-				<tr>
-					<td><div id="showCelcius">
-					<p>
-						<label>Celsius</label><br>
-						<input id="inputCelsius" type="number" placeholder="Celsius" oninput="temperatureConverter(this.value)" onchange="temperatureConverter(this.value)">
-					</p>
-					<p>Fahrenheit: <span id="outputFahrenheit"></span></p>
-					<p>Kelvin : <span id="outputKelvin"></span></p>
-				</div></td>
-				<td><div id="showfhn">
-					<p>
-						<label>Fahrenheit</label><br>
-						<input id="inputFahrenheit" type="number" placeholder="Fahrenheit" oninput="temperatureConverter2(this.value)" onchange="temperatureConverter2(this.value)">
-					</p>
-					<p>Celcius: <span id="outputCelcius"></span></p>
-					<p>Kelvin : <span id="outputKelvin2"></span></p>
-				</div></td>
-				<td><div id="showkvn">
-					<p>
-						<label>Kelvin</label><br>
-						<input id="inputKelvin" type="number" placeholder="Kelvin" oninput="temperatureConverter3(this.value)" onchange="temperatureConverter3(this.value)">
-					</p>
-					<p>Fahrenheit: <span id="outputFahrenheit2"></span></p>
-					<p>Celcius: <span id="outputCelcius2"></span></p>
-				</div></td>
-				</tr>
-			</table>
-	
+				<table>
+					<tr>
+						<th><button id="celcius" class="btn btn-primary">Celcius</button></th>
+						<th><button id="fhn" class="btn btn-success">Fahrenheit</button></th>
+						<th><button id="kvn" class="btn btn-danger">Kelvin</button></th>
+					</tr>
+					<tr>
+						<td>
+							<div id="showCelcius">
+								<p>
+									<label>Celsius</label><br>
+									<input id="inputCelsius" type="number" placeholder="Celsius" oninput="temperatureConverter(this.value)" onchange="temperatureConverter(this.value)">
+								</p>
+								<p>Fahrenheit: <span id="outputFahrenheit"></span></p>
+								<p>Kelvin : <span id="outputKelvin"></span></p>
+							</div>
+						</td>
+						<td>
+							<div id="showfhn">
+								<p>
+									<label>Fahrenheit</label><br>
+									<input id="inputFahrenheit" type="number" placeholder="Fahrenheit" oninput="temperatureConverter2(this.value)" onchange="temperatureConverter2(this.value)">
+								</p>
+								<p>Celcius: <span id="outputCelcius"></span></p>
+								<p>Kelvin : <span id="outputKelvin2"></span></p>
+							</div>
+						</td>
+						<td>
+							<div id="showkvn">
+								<p>
+									<label>Kelvin</label><br>
+									<input id="inputKelvin" type="number" placeholder="Kelvin" oninput="temperatureConverter3(this.value)" onchange="temperatureConverter3(this.value)">
+								</p>
+								<p>Fahrenheit: <span id="outputFahrenheit2"></span></p>
+								<p>Celcius: <span id="outputCelcius2"></span></p>
+							</div>
+						</td>
+					</tr>
+				</table>
+
 			</div>
 			<!-- temp end-->
 		</div><!-- /row -->
@@ -118,12 +124,11 @@
 			<div class="isikomen">
 				<p><?= $km["komentar"]; ?></p>
 			</div>
-			<div class="buttonkomen">
-				<button type="button" class="btn btn-primary buttonkomen" id="btnreply">Reply</button>
-			</div>
+			<!-- <div class="buttonkomen">
+						<button type="button" class="btn btn-primary buttonkomen" id="btnreply">Reply</button>
+					</div> -->
 
-			<p style="color:white;">.</p>
-
+			<br><br>
 		</div>
 	<?php
 	// var_dump($row);
@@ -166,6 +171,6 @@
 	<?php endif; ?>
 	<?php if ($_SESSION['login'] == false) {
 		echo "<h3>Login For Comment :)</h3>";
-	}?>
+	} ?>
 	<br>
 </div>
