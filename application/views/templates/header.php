@@ -46,7 +46,7 @@
                     <li><a href="<?= base_url('about'); ?>">About</a></li>
                     <li><a href="<?= base_url('blog1'); ?>">Blog</a></li>
                     <li>
-                        <?php if ($_SESSION['login'] == true) {
+                        <?php if ($this->session->userdata('login') == true) {
                             echo "<a href='" . base_url('login/logout') . "'>Logout</a>";
                         } else {
                             echo "<a href='" . base_url('login') . "'>login</a>";

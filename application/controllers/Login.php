@@ -9,9 +9,6 @@ class Login extends CI_Controller
         parent::__construct();
         // $this->load->model('Login_model');
         $this->load->library('form_validation');
-        $this->load->library('session');
-        $this->load->helper('cookie');
-        $_SESSION['login'] = false;
     }
     public function index()
     {
@@ -38,10 +35,6 @@ class Login extends CI_Controller
 
         // jika ada
         if ($user) {
-            // cek password
-            // var_dump($username);
-            // var_dump($password);
-            // var_dump($user['password']);
             if (password_verify($password, $user['password'])) {
                 $data = [
                     'iduser' => $user['id'],
@@ -79,9 +72,8 @@ class Login extends CI_Controller
 
     public function logout()
     {
-        unset($_SESSION['iduser'],
-        $_SESSION['nama']);
-        $_SESSION['login'] = false;
+        $key = array('userid', 'nama', 'login' );
+        $this->session->unset_userdata($key);
         redirect('home');
     }
 }

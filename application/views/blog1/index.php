@@ -153,10 +153,10 @@
 		<!-- input komentar -->
 		<form action="" method="post">
 			<div class="form-group">
-				<input type="hidden" name="iduser" value="<?= $_SESSION['iduser']; ?>">
+				<input type="hidden" name="iduser" value="<?= $this->session->userdata('iduser'); ?>">
 			</div>
 			<div class="form-group">
-				<input type="hidden" name="nama" value="<?= $_SESSION['nama']; ?>">
+				<input type="hidden" name="nama" value="<?= $this->session->userdata('nama');; ?>">
 			</div>
 			<div class="form-group">
 				<input type="hidden" name="tanggal" value="<?= date('Y-m-d  H:i:s'); ?>">
