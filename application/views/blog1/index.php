@@ -149,18 +149,17 @@
 		fields are marked *
 	</p>
 
-	<?php if ($_SESSION['login'] == true) : ?>
+	<?php if ( isset($_SESSION['login']) == true) { ?>
 		<!-- input komentar -->
 		<form action="" method="post">
 			<div class="form-group">
-				<input type="hidden" name="iduser" value="<?= $_SESSION['id']; ?>">
+				<input type="hidden" name="iduser" value="<?= $this->session->userdata('iduser'); ?>">
 			</div>
 			<div class="form-group">
-				<input type="hidden" name="nama" value="<?= $_SESSION['nama']; ?>">
+				<input type="hidden" name="nama" value="<?= $this->session->userdata('nama');; ?>">
 			</div>
 			<div class="form-group">
-				<input type="hidden" name="tanggal" value="<?= date('Y-m-d  H:i:s'); // nanti pake js
-															?>">
+				<input type="hidden" name="tanggal" value="<?= date('Y-m-d  H:i:s'); ?>">
 			</div>
 			<div class="form-group">
 				<label for="input2">Komentar</label>
@@ -168,8 +167,7 @@
 			</div>
 			<button type="submit" class="btn btn-primary" name="submit">Submit</button>
 		</form>
-	<?php endif; ?>
-	<?php if ($_SESSION['login'] == false) {
+	<?php } elseif (isset($_SESSION['login']) == false) {
 		echo "<h3>Login For Comment :)</h3>";
 	} ?>
 	<br>
