@@ -11,7 +11,7 @@ class Auth extends CI_Controller
     }
 
     // halaman auth utama adalah login
-    public function index()
+    public function Index()
     {
         // validasi inputan
         $this->form_validation->set_rules('email', 'Email', 'trim|required');
