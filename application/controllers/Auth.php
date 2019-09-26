@@ -1,17 +1,17 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Login extends CI_Controller
+class Auth extends CI_Controller
 {
 
     public function __construct()
     {
         parent::__construct();
-        // $this->load->model('Login_model');
         $this->load->library('form_validation');
     }
     public function index()
     {
+        // validasi inputan
         $this->form_validation->set_rules('usernameLogin', 'Usename', 'trim|required');
         $this->form_validation->set_rules('passwordLogin', 'Password', 'trim|required');
 
