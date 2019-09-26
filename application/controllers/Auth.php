@@ -63,25 +63,47 @@ class Auth extends CI_Controller
             redirect('auth');
         }
     }
-    public function new()
+    public function signup()
     {
-        $this->form_validation->set_rules('usernameNew', 'Usename', 'trim|required');
-        $this->form_validation->set_rules('passwordNew', 'Password', 'trim|required');
-        $this->form_validation->set_rules('passwordNew2', 'Password', 'required|trim|matches[passwordNew]');
+        // jika user sudah login (ditandai dengan adanya session yang di dapat ketika login)
+        if ($this->session->userdata('email')) {
+            // redirect ke halaman home
+            redirect('home');
+        }
+
+        // validasi semua inputan
+        $this->form_validation->set_rules('nama', 'Name', 'required|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
+            'is_unique' => 'This Email has already registered'
+        ]);
+        $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[3]|matches[password2]', [
+            'matches' => 'password dont match!',
+            'min_length' => 'Password too short'
+        ]);
+        $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password]');
 
         if ($this->form_validation->run() == false) {
-            $data['title'] = "Registration";
+            $data['title'] = 'signup';
             $this->load->view('templates/header', $data);
-            $this->load->view('login/new');
+            $this->load->view('auth/signup');
             $this->load->view('templates/footer');
         } else {
+            // ambil data dari inputan user
+            $email = $this->input->post('email', true);
+            // siapkan data yang akan di INSERT ke database
             $data = [
-                'username' => htmlspecialchars($this->input->post('usernameNew', true)),
-                'password' => password_hash($this->input->post('passwordNew'), PASSWORD_DEFAULT)
+                'nama' => htmlspecialchars($this->input->post('nama', true)),
+                'email' => htmlspecialchars($email),
+                'image' => 'default.jpg',
+                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'date_created' => time(),
+                'is_active' => 1
             ];
-            // var_dump($data);die;
-            $this->db->insert('users', $data);
-            redirect('login');
+
+            $this->db->insert('user', $data); // insert $data ke tabel user
+            // beri pesan bahwa pendaftaran akun berhasil
+            $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">SignUp Berhasil</div>');
+            redirect("auth");
         }
     }
 
