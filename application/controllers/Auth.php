@@ -87,8 +87,15 @@ class Auth extends CI_Controller
 
     public function logout()
     {
-        $key = array('userid', 'nama', 'login');
-        $this->session->unset_userdata($key);
-        redirect('home');
+        // hapus / hilangkan session yang didapat saat login
+        $this->session->unset_userdata('email');
+        $this->session->unset_userdata('nama_user');
+        $this->session->unset_userdata('login');
+        $this->session->unset_userdata('id_user');
+
+        // tampilkan pesan bahwa user telah logout
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logout</div>');
+        // pindahkan kehalaman login
+        redirect('auth');
     }
 }
