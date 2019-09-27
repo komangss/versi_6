@@ -1,28 +1,25 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Blog1 extends CI_Controller
+class Blog extends CI_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Blog_model', 'blog');
 		$this->load->library('form_validation');
 	}
 
-	public function index()
+	public function Index()
 	{
 		$this->form_validation->set_rules('komentar', 'Usename', 'trim|required');
 
 		if ($this->form_validation->run() == false) {
-			$data['title'] = "blog";
-			$data['komentar'] = $this->blog->getAllKomen();
+			$data['title'] = "Blog Page";
 			$this->load->view('templates/header', $data);
-			$this->load->view('blog1/index');
+			$this->load->view('blog/index');
 			$this->load->view('templates/footer');
 		} else {
-			$this->blog->tambahKomentar();
-			redirect('blog1');
+			redirect('blog');
 		}
 	}
 }

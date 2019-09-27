@@ -44,12 +44,16 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="work.html">Work</a></li>
                     <li><a href="<?= base_url('about'); ?>">About</a></li>
-                    <li><a href="<?= base_url('blog1'); ?>">Blog</a></li>
+                    <li><a href="<?= base_url('blog'); ?>">Blog</a></li>
                     <li>
-                        <?php if ($this->session->userdata('login') == true) {
-                            echo "<a href='" . base_url('login/logout') . "'>Logout</a>";
+                        <?php
+                        // jika ada session yang didapatkan ketika user login. maka tampilkan navigasi untuk logout 
+                        if ($this->session->userdata('email')) {
+                            echo '
+                            <a href="' . base_url("auth/logout") . '">logout</a>
+                            ';
                         } else {
-                            echo "<a href='" . base_url('login') . "'>login</a>";
+                            echo "<a href='" . base_url('auth') . "'>login</a>";
                         } ?>
                     </li>
                 </ul>
