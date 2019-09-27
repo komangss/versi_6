@@ -1,16 +1,9 @@
 <!-- +++++ Post +++++ -->
-<?php
-// if ($this->session->userdata('nama')) {
-// 	echo "<a href='logout.php'>Logout</a>";
-// }
-// var_dump($_SESSION['iduser']);
-// var_dump($_SESSION['nama']);
-?>
 <div id="white">
 	<div class="container">
 		<div class="row col-lg-8 col-lg-offset-2">
-			<p><img src="assets/img/user.png" width="50px" height="50px">
-				<ba>Antonio Komang Y</ba>
+			<p><img src="<?= base_url('assets/img/user.png'); ?>" width="50px" height="50px">
+				<strong>Antonio Komang Yudistira</strong>
 			</p>
 			<p>April 20, 2019</p>
 			<h1>
@@ -110,30 +103,23 @@
 <div class="container jumbotron">
 	<h1>
 		COMMENT BOX
-	</h1>
-	<!-- wrap -->
-	<?php foreach ($komentar as $km) : ?>
+	</h1> 
+		<?php foreach ($komentar as $km) : ?>
 		<div class="coment">
-			<div class="namasikomen">
-				<img src="assets/img/user.png" width="40px" height="50px" class="imgclass">
-				<b><?= $km["nama"]; ?></b>
-				<div class="tanggal">
-					<p><?= $km["tanggal"]; ?></p>
+			<ul style="list-style: none;">
+				<div class="namasikomen">
+					<img src="<?= base_url('assets/img/user.png'); ?>" width="40px" height="50px" class="imgclass">
+					<li><strong><?= $km['nama'] ?></strong></li>
 				</div>
-			</div>
-			<div class="isikomen">
-				<p><?= $km["komentar"]; ?></p>
-			</div>
-			<!-- <div class="buttonkomen">
-						<button type="button" class="btn btn-primary buttonkomen" id="btnreply">Reply</button>
-					</div> -->
-
-			<br><br>
+				<div class="isikomen">
+					<li><?= $km['isi_komen'] ?></li> <br>
+				</div>
+				<div class="tanggal">
+					<li><?= date('Y-m-d  H:i:s', $km['date_created']); ?></li>
+				</div>
+			</ul>
 		</div>
-	<?php
-	// var_dump($row);
-	endforeach; ?>
-
+	<?php endforeach; ?>
 
 	<div id="wrap" class="row">
 		<div class="col-md-5">
@@ -149,7 +135,6 @@
 		fields are marked *
 	</p>
 
-	<?php if ( isset($_SESSION['login']) == true) { ?>
 		<!-- input komentar -->
 		<form action="" method="post">
 			<div class="form-group">
@@ -167,8 +152,5 @@
 			</div>
 			<button type="submit" class="btn btn-primary" name="submit">Submit</button>
 		</form>
-	<?php } elseif (isset($_SESSION['login']) == false) {
-		echo "<h3>Login For Comment :)</h3>";
-	} ?>
 	<br>
 </div>
