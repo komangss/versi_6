@@ -10,7 +10,7 @@
 				Suhu
 			</h1>
 			<p>
-				<img class="img-responsive img-blog" src="assets/img/bg-fisika.jpg" alt="">
+				<img class="img-responsive" src="<?= base_url('assets/img/bg-fisika.jpg'); ?>" alt="">
 			</p>
 			<p>
 				Halo teman teman, jumpa lagi di seri belajar Fisika
@@ -48,7 +48,7 @@
 			<!-- temp-->
 			<h2>konverter suhu :</h2><br><br>
 			<div class="suhu">
-				<table>
+				<table border="1">
 					<tr>
 						<th><button id="celcius" class="btn btn-primary">Celcius</button></th>
 						<th><button id="fhn" class="btn btn-success">Fahrenheit</button></th>
@@ -103,23 +103,8 @@
 <div class="container jumbotron">
 	<h1>
 		COMMENT BOX
-	</h1> 
-		<?php foreach ($komentar as $km) : ?>
-		<div class="coment">
-			<ul style="list-style: none;">
-				<div class="namasikomen">
-					<img src="<?= base_url('assets/img/user.png'); ?>" width="40px" height="50px" class="imgclass">
-					<li><strong><?= $km['nama'] ?></strong></li>
-				</div>
-				<div class="isikomen">
-					<li><?= $km['isi_komen'] ?></li> <br>
-				</div>
-				<div class="tanggal">
-					<li><?= date('Y-m-d  H:i:s', $km['date_created']); ?></li>
-				</div>
-			</ul>
-		</div>
-	<?php endforeach; ?>
+	</h1>
+	<!-- wrap -->
 
 	<div id="wrap" class="row">
 		<div class="col-md-5">
@@ -134,23 +119,45 @@
 		Your email address will not be published. Required
 		fields are marked *
 	</p>
+	<?= $this->session->flashdata('message'); ?>
 
-		<!-- input komentar -->
-		<form action="" method="post">
+	<!-- input komentar -->
+
+	<?php if ($this->session->userdata('id_user')) {
+		echo '
+		<form action="blog1" method="post">
 			<div class="form-group">
-				<input type="hidden" name="iduser" value="<?= $this->session->userdata('iduser'); ?>">
+				<input type="hidden" name="iduser" value="' . $this->session->userdata('id_user') . '">
 			</div>
 			<div class="form-group">
-				<input type="hidden" name="nama" value="<?= $this->session->userdata('nama');; ?>">
+				<input type="hidden" name="nama" value="' . $this->session->userdata('nama_user') . '">
 			</div>
 			<div class="form-group">
-				<input type="hidden" name="tanggal" value="<?= date('Y-m-d  H:i:s'); ?>">
+				<input type="hidden" name="tanggal" value="' . time() . '">
 			</div>
 			<div class="form-group">
-				<label for="input2">Komentar</label>
-				<textarea class="form-control" id="input2" name="komentar" rows="3" required></textarea>
+				<label for="komentar">Komentar</label>
+				<textarea class="form-control" id="komentar" name="komentar" rows="3" required></textarea>
 			</div>
 			<button type="submit" class="btn btn-primary" name="submit">Submit</button>
 		</form>
+		';
+	}
+	?>
 	<br>
+	<?php foreach ($komentar as $km) : ?>
+		<div class="coment">
+			<ul style="list-style: none;">
+				<div class="col-lg-2">
+					<img src="<?= base_url('assets/img/user.png'); ?>" width="40px" height="50px" class="imgclass">
+					<li><strong><?= $km['nama'] ?></strong></li>
+				</div>
+				<div class="col-lg-10" style="margin-top: 20px;">
+					<li><?= $km['isi_komen'] ?></li>
+					<li><?= date('Y-m-d  H:i:s', $km['date_created']); ?></li>
+				</div>
+			</ul>
+		</div>
+	<?php endforeach; ?>
+
 </div>
