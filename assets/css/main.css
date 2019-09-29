@@ -271,7 +271,8 @@ small{
 	font-size:smaller;
 }
 .imgclass{
-	margin-top:10px;
+  margin-top:10px;
+  border-radius: 50%;
 }
 .pref-post{
 	margin-bottom: 30px;	

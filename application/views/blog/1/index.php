@@ -149,7 +149,7 @@
 		<div class="coment">
 			<ul style="list-style: none;">
 				<div class="col-lg-2">
-					<img src="<?= base_url('assets/img/user.png'); ?>" width="40px" height="50px" class="imgclass">
+					<img src="<?= base_url('assets/img/default.jpg'); ?>" width="60px" height="70px" class="imgclass">
 					<li><strong><?= $km['nama'] ?></strong></li>
 				</div>
 				<div class="col-lg-10" style="margin-top: 20px;">
