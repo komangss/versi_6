@@ -28,11 +28,17 @@ class Blog extends CI_Controller
 
 		if ($this->form_validation->run() == false) {
 			// siapin query dari database join komentar dan user. lock komentar.user_id dengan user.id
-			$query = "SELECT `komentar`.*, `user`.`nama`
-            FROM `komentar` JOIN `user`
-            ON `komentar`.`user_id` = `user`.`id`
-			";
-			$data['komentar'] =  $this->db->query($query)->result_array();
+			// $query = "SELECT `komentar`.*, `user`.`nama`
+            // FROM `komentar` JOIN `user`
+            // ON `komentar`.`user_id` = `user`.`id`
+			// ";
+			$this->db->select('komentar.* , user.nama');
+			$this->db->from('komentar');
+			$this->db->join('user', '
+			komentar.user_id = user.id');
+			$data['komentar'] = $this->db->get()->result_array();
+			// var_dump($query); die;
+
 			$data['title'] = "Blog Konverter Suhu";
 			$this->load->view('templates/header', $data);
 			$this->load->view('blog/1/index');
