@@ -3,11 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Auth extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
         $this->load->library('form_validation');
+        $this->load->helper('captcha');
     }
 
     // halaman auth utama adalah login
@@ -16,22 +16,80 @@ class Auth extends CI_Controller
         // validasi inputan
         $this->form_validation->set_rules('email', 'Email', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
+        $this->form_validation->set_rules('input_captcha', 'CAPTCHA', 'trim|required');
+
+        // buat variabel tempat menyimpan alamat gambarnya
+        $file_delete_all = glob(BASEPATH . "../captcha/*.jpg");
+        // buat variabel untuk menyimpan alamat folder captcha
+        $files = BASEPATH . "../captcha/";
 
         if ($this->form_validation->run() == false) {
+
+
+            // CAPTCHA
+
+            // lakukan looping ke semua file yang ada di folder captcha 
+            foreach ($file_delete_all as $file) {
+                // cek apakah yang dimaksud file
+                if (is_file($file)) {
+                    // bila iya delete file itu
+                    unlink($file);
+                }
+            }
+            // buat variabel acak
+            $angka_acak = substr(number_format(time() * rand(), 0, '', ''), 0, 0);
+
+            // konfigurasi captcha
+            $vals = [
+                'word' => $angka_acak,
+                'img_path' => "./captcha/",
+                'img_url' => base_url() . "captcha/",
+                'font_path' => BASEPATH . 'system/fonts/texb.ttf',
+                'font_size' => 16,
+                'img_width' => 130,
+                'img_height' => 35,
+                'expiration' => 7200
+            ];
+            // jalankan captchanya dan taruh di data agar bisa dikirim ke view
+            $data['captcha'] = create_captcha($vals);
+
+            // taruh data captcha di session
+            $this->session->set_userdata($data['captcha']);
+            // var_dump($this->session->userdata('word'));
+
+
             $data['title'] = "Login Page";
             $this->load->view('templates/header', $data);
-            $this->load->view('auth/login');
+            $this->load->view('auth/login', $data);
             $this->load->view('templates/footer');
+
+            // library form validation berjalan
         } else {
-            // kalau library form validation berjalan, jalankan method _login yang sudah dibuat dibawah
-            $this->_login();
+            // ambil inputan teks captchanya
+            $word_captcha = $this->input->post('input_captcha');
+
+            // validasi input captchanya dengan captcha yang ada di session
+            if ($word_captcha ==  $this->session->userdata('word')) {
+                // hilangkan data captcha dan haous gambar captchanya
+                if (file_exists($files . $this->session->userdata('image'))) {
+                    unlink($files . $this->session->userdata('image'));
+                }
+
+                $this->session->unset_userdata($vals);
+                $this->session->unset_userdata('word');
+
+                // kalau pengecekan captcha berhasil, jalankan method _login yang sudah dibuat dibawah
+                $this->_login();
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Captcha Salah! are you terminator? >:(</div>');
+                redirect('auth');
+            }
         }
     }
     private function _login()
     {
         $email = $this->input->post('email');
         $password = $this->input->post('password');
-        // var_dump($username);die;
 
         // get data untuk melakukan validasi ke database
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
@@ -102,7 +160,7 @@ class Auth extends CI_Controller
 
             $this->db->insert('user', $data); // insert $data ke tabel user
             // beri pesan bahwa pendaftaran akun berhasil
-            $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">SignUp Berhasil</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">SignUp Berhasil</div>');
             redirect("auth");
         }
     }

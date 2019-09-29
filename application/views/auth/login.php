@@ -15,6 +15,11 @@
 					<label for="password">password :</label>
 					<input placeholder="Input Your password here..." type="password" name="password" id="password" class="form-control">
 				</div>
+				<div class="form-group">
+					<label for="input_captcha">captcha</label>
+					<?= $captcha['image']; ?>
+					<input placeholder="Tulis teks pada gambar diatas" type="text" name="input_captcha" id="input_captcha" class="form-control">
+				</div>
 				<button type="submit" class="btn btn-primary">SUBMIT!</button>
 			</form>
 
